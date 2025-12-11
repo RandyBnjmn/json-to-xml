@@ -6,6 +6,10 @@ Una hermosa y moderna SPA de Angular para convertir entre formatos JSON y XML en
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+## 📸 Vista Previa
+
+![alt text](preview.png)
+![alt text](preview-mobile.png)
 ## ✨ Características
 
 | Característica | Descripción |
