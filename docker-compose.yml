@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  json-xml-converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: json-xml-converter
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
