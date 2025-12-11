@@ -1,0 +1,81 @@
+<div class="app-container">
+  <header class="header">
+    <h1 class="title">{{ title }}</h1>
+    <p class="subtitle">Convert between JSON and XML formats instantly</p>
+  </header>
+
+  <div class="controls">
+    <button class="btn btn-toggle" (click)="toggleMode()" title="Switch conversion direction">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/>
+      </svg>
+      <span>Switch Mode</span>
+    </button>
+    <button class="btn btn-secondary" (click)="loadExample()" title="Load example">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+        <polyline points="13 2 13 9 20 9"/>
+      </svg>
+      <span>Example</span>
+    </button>
+    <button class="btn btn-secondary" (click)="clearAll()" title="Clear all">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+      <span>Clear</span>
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <span>{{ errorMessage }}</span>
+  </div>
+
+  <div class="converter-container">
+    <div class="panel">
+      <div class="panel-header">
+        <label class="panel-label">{{ leftLabel }}</label>
+        <span class="mode-indicator">Input</span>
+      </div>
+      <textarea
+        class="textarea input-textarea"
+        [(ngModel)]="leftInput"
+        (ngModelChange)="onLeftInputChange($event)"
+        [placeholder]="leftPlaceholder"
+        spellcheck="false"
+      ></textarea>
+    </div>
+
+    <div class="divider">
+      <div class="arrow-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <label class="panel-label">{{ rightLabel }}</label>
+        <span class="mode-indicator">Output</span>
+      </div>
+      <textarea
+        class="textarea output-textarea"
+        [value]="rightOutput"
+        [placeholder]="rightPlaceholder"
+        readonly
+        spellcheck="false"
+      ></textarea>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Built with Angular • Real-time conversion with 300ms debounce</p>
+  </footer>
+</div>
